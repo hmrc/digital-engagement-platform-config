@@ -19,7 +19,7 @@ package controllers
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import config.AppConfig
-import uk.gov.hmrc.digitalengagementplatformconfig.views.html.LandingView
+import views.html.LandingView
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 
 import scala.concurrent.Future
