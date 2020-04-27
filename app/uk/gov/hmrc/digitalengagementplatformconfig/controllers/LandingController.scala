@@ -14,17 +14,24 @@
  * limitations under the License.
  */
 
-package config
+package controllers
 
 import javax.inject.{Inject, Singleton}
-import play.api.i18n.MessagesApi
-import play.api.mvc.Request
-import play.twirl.api.Html
-import uk.gov.hmrc.digitalengagementplatformconfig.views.html.error_template
-import uk.gov.hmrc.play.bootstrap.http.FrontendErrorHandler
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
+import config.AppConfig
+import uk.gov.hmrc.digitalengagementplatformconfig.views.html.LandingView
+import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+
+import scala.concurrent.Future
 
 @Singleton
-class ErrorHandler @Inject()(val messagesApi: MessagesApi, implicit val appConfig: AppConfig) extends FrontendErrorHandler {
-  override def standardErrorTemplate(pageTitle: String, heading: String, message: String)(implicit request: Request[_]): Html =
-    error_template(pageTitle, heading, message)
+class LandingController @Inject()(appConfig: AppConfig,
+                                  mcc: MessagesControllerComponents) extends FrontendController(mcc) {
+
+  implicit val config: AppConfig = appConfig
+
+  def landing: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(LandingView()))
+  }
+
 }
