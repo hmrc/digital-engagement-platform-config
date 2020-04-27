@@ -18,6 +18,9 @@
 
 @()(implicit request: Request[_], messages: Messages, appConfig: AppConfig)
 
-@main_template(title = "Hello from digital-engagement-platform-config", bodyClasses = None) {
+@main_template(title = messages("landing.title"), bodyClasses = None) {
     <h1>@messages("landing.title")</h1>
+
+    <script type="text/javascript" language="javascript" charset="utf-8" src="https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"> </script>
+
 }
