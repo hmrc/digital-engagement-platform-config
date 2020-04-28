@@ -1,4 +1,6 @@
 import scoverage.ScoverageKeys
+import sbt.Keys.resolvers
+import sbt.Resolver
 import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
 import uk.gov.hmrc.SbtArtifactory
 import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
@@ -16,9 +18,12 @@ lazy val scoverageSettings = {
 
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(play.sbt.PlayScala, SbtAutoBuildPlugin, SbtGitVersioning, SbtDistributablesPlugin, SbtArtifactory, ScoverageSbtPlugin)
+  .disablePlugins(JUnitXmlReportPlugin)
+  .settings(integrationTestSettings(): _*)
   .settings(
     majorVersion                     := 0,
-    libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
+    libraryDependencies              ++= AppDependencies.all,
+    scalaVersion := "2.12.8",
     scoverageSettings
   )
   .settings(publishingSettings: _*)
