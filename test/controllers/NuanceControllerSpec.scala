@@ -34,10 +34,9 @@ class NuanceControllerSpec
 
     implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-    implicit val appConfig = app.injector.instanceOf[AppConfig]
     val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
 
-    private val controller = new NuanceController(appConfig, messagesCC)
+    private val controller = new NuanceController(messagesCC)
 
     def asDocument(html: String): Document = Jsoup.parse(html)
 
