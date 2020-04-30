@@ -3,4 +3,4 @@
 GET         /landing                        controllers.LandingController.landing
 
 GET         /hmrc-uk-nuance.html            controllers.NuanceController.nuance
-GET         /nuance/hmrc-uk-nuance.htm      controllers.NuanceController.nuance
+GET         /nuance/hmrc-uk-nuance.html     controllers.NuanceController.nuance
