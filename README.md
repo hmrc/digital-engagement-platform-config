@@ -20,7 +20,7 @@ sbt run
 and then access the application at
 
 ```
-http://localhost:9957/engagement-pl/nuance/hmrc-uk-nuance.html atform
+http://localhost:9957/engagement-platform/nuance/hmrc-uk-nuance.html atform
 ```
 
 ## Unit tests
