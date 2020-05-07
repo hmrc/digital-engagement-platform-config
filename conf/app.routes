@@ -1,3 +1,4 @@
 # microservice specific routes
 
-GET         /nuance/hmrc-uk-nuance.html     controllers.NuanceController.nuance
+GET         /nuance/hmrc-uk-nuance.html                 controllers.NuanceController.nuanceProd
+GET         /nuance/hmrc-uk-nuance-preprod.html         controllers.NuanceController.nuancePreProd

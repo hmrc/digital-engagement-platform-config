@@ -41,8 +41,14 @@ class NuanceControllerSpec
     def asDocument(html: String): Document = Jsoup.parse(html)
 
     "fixed URLs" should {
-        "render nuance file page" in {
-            val result = controller.nuance(fakeRequest)
+        "render nuance production file page" in {
+            val result = controller.nuanceProd(fakeRequest)
+
+            status(result) shouldBe OK
+        }
+
+        "render nuance Pre Production file page" in {
+            val result = controller.nuancePreProd(fakeRequest)
 
             status(result) shouldBe OK
         }
