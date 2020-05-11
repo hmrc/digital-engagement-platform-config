@@ -16,6 +16,7 @@
 
 package controllers
 
+import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
@@ -25,13 +26,19 @@ import views.html.NuanceFilePreProd
 import scala.concurrent.Future
 
 @Singleton
-class NuanceController @Inject()(mcc: MessagesControllerComponents) extends FrontendController(mcc) {
+class NuanceController @Inject()(
+                                  appConfig: AppConfig,
+                                  nuanceFileProdView: NuanceFileProd,
+                                  nuanceFilePreProdView: NuanceFilePreProd,
+                                  mcc: MessagesControllerComponents) extends FrontendController(mcc) {
+
+  implicit val config: AppConfig = appConfig
 
   def nuanceProd: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(NuanceFileProd()))
+    Future.successful(Ok(nuanceFileProdView()))
   }
 
   def nuancePreProd: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(NuanceFilePreProd()))
+    Future.successful(Ok(nuanceFilePreProdView()))
   }
 }
