@@ -25,6 +25,7 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
+import views.html.{NuanceFilePreProd, NuanceFileProd}
 
 class NuanceControllerSpec
   extends WordSpec
@@ -34,9 +35,17 @@ class NuanceControllerSpec
 
     implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
+    implicit val appConfig = app.injector.instanceOf[AppConfig]
     val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
 
-    private val controller = new NuanceController(messagesCC)
+    val nuanceFileProd = app.injector.instanceOf[NuanceFileProd]
+    val nuanceFilePreProd = app.injector.instanceOf[NuanceFilePreProd]
+
+    private val controller = new NuanceController(
+        appConfig,
+        nuanceFileProd,
+        nuanceFilePreProd,
+        messagesCC)
 
     def asDocument(html: String): Document = Jsoup.parse(html)
 
