@@ -25,7 +25,7 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import views.html.{NuanceFilePreProd, NuanceFileProd}
+import views.html.NuanceFile
 
 class NuanceControllerSpec
   extends WordSpec
@@ -38,26 +38,18 @@ class NuanceControllerSpec
     implicit val appConfig = app.injector.instanceOf[AppConfig]
     val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
 
-    val nuanceFileProd = app.injector.instanceOf[NuanceFileProd]
-    val nuanceFilePreProd = app.injector.instanceOf[NuanceFilePreProd]
+    val nuanceFile = app.injector.instanceOf[NuanceFile]
 
     private val controller = new NuanceController(
         appConfig,
-        nuanceFileProd,
-        nuanceFilePreProd,
+        nuanceFile,
         messagesCC)
 
     def asDocument(html: String): Document = Jsoup.parse(html)
 
     "fixed URLs" should {
-        "render nuance production file page" in {
-            val result = controller.nuanceProd(fakeRequest)
-
-            status(result) shouldBe OK
-        }
-
-        "render nuance Pre Production file page" in {
-            val result = controller.nuancePreProd(fakeRequest)
+        "render nuance file page" in {
+            val result = controller.nuance(fakeRequest)
 
             status(result) shouldBe OK
         }
