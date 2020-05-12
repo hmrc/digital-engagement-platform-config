@@ -35,4 +35,5 @@ class AppConfig @Inject()(config: Configuration, servicesConfig: ServicesConfig)
   val reportAProblemNonJSUrl: String   = s"$contactBaseUrl/contact/problem_reports_nonjs?service=$serviceIdentifier"
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
+  val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
 }
