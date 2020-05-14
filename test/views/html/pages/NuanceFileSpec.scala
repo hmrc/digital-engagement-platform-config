@@ -29,8 +29,6 @@ class NuanceFileSpec extends ChatViewBehaviours {
 
   implicit val appConfig = app.injector.instanceOf[AppConfig]
 
-  val preProdMode: String = System.getProperty("pre-prod.mode")
-
   def createView(preProdFlag: Boolean): () => HtmlFormat.Appendable = () => view(preProdFlag)(fakeRequest, messages)
 
 

@@ -16,16 +16,9 @@
 
 package views.html.pages
 
-import config.AppConfig
 import play.twirl.api.HtmlFormat
 
 trait ChatViewBehaviours extends ViewSpecBase {
-
-  //implicit val appConfig = app.injector.instanceOf[AppConfig]
-
-  //val preProdFlag = appConfig.preProdMode
-
-//  appConfig.preProdMode.equals(false)
 
   def normalPage(view: () => HtmlFormat.Appendable,
                  nuancePreProdJavaScriptTag: String,
@@ -36,13 +29,11 @@ trait ChatViewBehaviours extends ViewSpecBase {
         "have the correct nuancePreProdJavaScriptTag" in {
           val doc = asDocument(view())
           assertContainsText(doc, s"$nuancePreProdJavaScriptTag")
-          //assert(preProdFlag) equals(false)
         }
 
         "have the correct Nuance nuanceProdJavaScriptTag" in {
           val doc = asDocument(view())
           assertContainsText(doc, s"$nuanceProdJavaScriptTag")
-          //assert(preProdFlag) equals(true)
         }
       }
     }

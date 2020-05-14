@@ -28,7 +28,7 @@
     </head>
     <body>
         @if(!appConfig.performanceTest){
-            @if(!appConfig.preProdMode){
+            @if(!preProdFlag){
                 <script type="text/javascript" language="javascript" charset="utf-8" src="https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"> </script>
             } else {
                 <script type="text/javascript">
