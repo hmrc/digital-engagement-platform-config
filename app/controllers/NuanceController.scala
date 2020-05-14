@@ -33,6 +33,6 @@ class NuanceController @Inject()(
   implicit val config: AppConfig = appConfig
 
   def nuance: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nuanceFileView()))
+    Future.successful(Ok(nuanceFileView(appConfig.preProdMode)))
   }
 }
