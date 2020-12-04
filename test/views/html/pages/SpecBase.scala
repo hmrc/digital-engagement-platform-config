@@ -37,5 +37,4 @@ trait SpecBase extends PlaySpec with GuiceOneAppPerSuite {
   def messages: Messages = messagesApi.preferred(fakeRequest)
 
   val bodyParser:BodyParsers.Default = app.injector.instanceOf[BodyParsers.Default]
-
 }
