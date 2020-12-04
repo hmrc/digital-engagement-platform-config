@@ -16,35 +16,27 @@
 
 package views.html.pages
 
-import config.AppConfig
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.NuanceFile
 
 class NuanceFileSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[NuanceFile]
 
-  val view = app.injector.instanceOf[NuanceFile]
-
-  implicit val appConfig = app.injector.instanceOf[AppConfig]
-
-  def createView(preProdFlag: Boolean): () => HtmlFormat.Appendable = () => view(preProdFlag)(fakeRequest, messages)
+  private def createView(preProdFlag: Boolean): () => HtmlFormat.Appendable =
+    () => view(preProdFlag)(fakeRequest, messages)
 
 
-  "Nuance File must display the correct tag in the view view when pre-prod.mode = false" must {
-    val preProdFlag = appConfig.preProdMode.equals(true)
+  "Nuance File must display the correct tag in the view when pre-prod.mode = false" must {
     behave like normalPage(
-      createView(preProdFlag),
+      createView(false),
       "",
       "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
     )
   }
 
-  "Nuance File must display the correct tag in the view view when pre-prod.mode = true" must {
-    val preProdFlag = appConfig.preProdMode.equals(false)
+  "Nuance File must display the correct tag in the view when pre-prod.mode = true" must {
     behave like normalPage(
-      createView(preProdFlag),
+      createView(true),
       "https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js",
       ""
     )
