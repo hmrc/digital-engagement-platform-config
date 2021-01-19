@@ -2,7 +2,6 @@ import scoverage.ScoverageKeys
 import sbt.Keys.resolvers
 import sbt.Resolver
 import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
-import uk.gov.hmrc.SbtArtifactory
 import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
 val appName = "digital-engagement-platform-config"
@@ -17,7 +16,7 @@ lazy val scoverageSettings = {
 }
 
 lazy val microservice = Project(appName, file("."))
-  .enablePlugins(play.sbt.PlayScala, SbtAutoBuildPlugin, SbtGitVersioning, SbtDistributablesPlugin, SbtArtifactory, ScoverageSbtPlugin)
+  .enablePlugins(play.sbt.PlayScala, SbtAutoBuildPlugin, SbtGitVersioning, SbtDistributablesPlugin, ScoverageSbtPlugin)
   .disablePlugins(JUnitXmlReportPlugin)
   .settings(integrationTestSettings(): _*)
   .settings(
