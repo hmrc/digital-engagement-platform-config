@@ -16,36 +16,20 @@
 
 package controllers
 
-import config.AppConfig
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, MessagesControllerComponents}
+import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import views.html.NuanceFile
 
 class NuanceControllerSpec
   extends WordSpec
     with Matchers
-    with GuiceOneAppPerSuite
-    with ScalaCheckPropertyChecks {
+    with GuiceOneAppPerSuite {
 
-    implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+    private val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-    implicit val appConfig = app.injector.instanceOf[AppConfig]
-    val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
-
-    val nuanceFile = app.injector.instanceOf[NuanceFile]
-
-    private val controller = new NuanceController(
-        appConfig,
-        nuanceFile,
-        messagesCC)
-
-    def asDocument(html: String): Document = Jsoup.parse(html)
+    private val controller = app.injector.instanceOf[NuanceController]
 
     "fixed URLs" should {
         "render nuance file page" in {
