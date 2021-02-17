@@ -24,10 +24,8 @@ import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 class AppConfig @Inject()(config: Configuration, servicesConfig: ServicesConfig) {
   private val contactBaseUrl = servicesConfig.baseUrl("contact-frontend")
 
-  private val assetsUrl         = config.get[String]("assets.url")
   private val serviceIdentifier = "digital-engagement-platform-config"
 
-  val assetsPrefix: String   = assetsUrl + config.get[String]("assets.version")
   val analyticsToken: String = config.get[String](s"google-analytics.token")
   val analyticsHost: String  = config.get[String](s"google-analytics.host")
 

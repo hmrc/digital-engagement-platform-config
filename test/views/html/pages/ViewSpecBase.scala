@@ -25,23 +25,6 @@ trait ViewSpecBase extends SpecBase {
 
   def asDocument(html: Html): Document = Jsoup.parse(html.toString())
 
-  def assertEqualsMessage(doc: Document, cssSelector: String, expectedMessageKey: String): Assertion =
-    assertEqualsValue(doc, cssSelector, messages(expectedMessageKey))
-
-  def assertEqualsValue(doc : Document, cssSelector : String, expectedValue: String): Assertion = {
-    val elements = doc.select(cssSelector)
-
-    if(elements.isEmpty) throw new IllegalArgumentException(s"CSS Selector $cssSelector wasn't rendered.")
-
-    assert(elements.first().html().replace("\n", "") == expectedValue)
-  }
-
-  def assertPageTitleEqualsMessage(doc: Document, expectedMessageKey: String, args: Any*): Assertion = {
-    val headers = doc.getElementsByTag("h1")
-    headers.size mustBe 1
-    headers.first.text.replaceAll("\u00a0", " ") mustBe messages(expectedMessageKey, args:_*).replaceAll("&nbsp;", " ")
-  }
-
   def assertContainsText(doc:Document, text: String): Assertion =
     assert(doc.toString.contains(text), "\n\ntext " + text + " was not rendered on the page.\n")
 }

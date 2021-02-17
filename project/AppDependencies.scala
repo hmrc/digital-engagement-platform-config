@@ -2,14 +2,14 @@ import sbt.{ModuleID, _}
 
 object AppDependencies {
 
-  val compile = Seq(
+  private val compile: Seq[ModuleID] = Seq(
 
     "uk.gov.hmrc"             %% "govuk-template"               % "5.61.0-play-27",
     "uk.gov.hmrc"             %% "play-ui"                      % "8.20.0-play-27",
     "uk.gov.hmrc"             %% "bootstrap-frontend-play-27"   % "3.3.0"
   )
 
-  val test = Seq(
+  private val test: Seq[ModuleID] = Seq(
     "uk.gov.hmrc"             %% "bootstrap-frontend-play-27"   % "3.3.0"     % "test",
     "org.scalatest"           %% "scalatest"                    % "3.0.8"     % "test",
     "org.scalacheck"          %% "scalacheck"                   % "1.13.4"    % "test",
