@@ -22,7 +22,8 @@ lazy val microservice = Project(appName, file("."))
   .settings(
     majorVersion                     := 0,
     libraryDependencies              ++= AppDependencies.all,
-    scalaVersion := "2.12.8",
+    scalaVersion := "2.12.9",
+    SilencerSettings(),
     PlayKeys.playDefaultPort := 9957,
     scoverageSettings
   )

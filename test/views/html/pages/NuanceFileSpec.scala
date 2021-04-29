@@ -23,7 +23,7 @@ class NuanceFileSpec extends ChatViewBehaviours {
   private val view = app.injector.instanceOf[NuanceFile]
 
   private def createView(preProdFlag: Boolean): () => HtmlFormat.Appendable =
-    () => view(preProdFlag)(fakeRequest, messages)
+    () => view(preProdFlag)
 
 
   "Nuance File must display the correct tag in the view when pre-prod.mode = false" must {
