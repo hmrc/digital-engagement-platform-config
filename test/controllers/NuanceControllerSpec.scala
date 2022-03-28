@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,26 +19,25 @@ package controllers
 import config.AppConfig
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, MessagesControllerComponents}
+import play.api.mvc.{AnyContentAsEmpty, Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.NuanceFile
 
 class NuanceControllerSpec
-  extends WordSpec
+  extends AnyWordSpecLike
     with Matchers
-    with GuiceOneAppPerSuite
-    with ScalaCheckPropertyChecks {
+    with GuiceOneAppPerSuite {
 
-    implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+    implicit private val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-    implicit val appConfig = app.injector.instanceOf[AppConfig]
-    val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
+    implicit val appConfig: AppConfig = app.injector.instanceOf[AppConfig]
+    val messagesCC: MessagesControllerComponents = app.injector.instanceOf[MessagesControllerComponents]
 
-    val nuanceFile = app.injector.instanceOf[NuanceFile]
+    val nuanceFile: NuanceFile = app.injector.instanceOf[NuanceFile]
 
     private val controller = new NuanceController(
         appConfig,
