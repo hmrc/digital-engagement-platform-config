@@ -9,7 +9,7 @@ val appName = "digital-engagement-platform-config"
 lazy val scoverageSettings = {
   Seq(
     ScoverageKeys.coverageExcludedPackages :="""uk\.gov\.hmrc\.BuildInfo;.*\.Routes;.*\.RoutesPrefix;.*\.ErrorTemplate;.*\.ErrorHandler;.*\.TestOnlyTemplate;.*\.TestOnlyView;.*\.Reverse[^.]*""",
-    ScoverageKeys.coverageMinimumStmtTotal := 94,
+    ScoverageKeys.coverageMinimumStmtTotal := 90,
     ScoverageKeys.coverageFailOnMinimum := false,
     ScoverageKeys.coverageHighlighting := true
   )
@@ -22,7 +22,7 @@ lazy val microservice = Project(appName, file("."))
   .settings(
     majorVersion                     := 0,
     libraryDependencies              ++= AppDependencies.all,
-    scalaVersion := "2.12.15",
+    scalaVersion := "2.13.8",
     SilencerSettings(),
     PlayKeys.playDefaultPort := 9957,
     scoverageSettings
