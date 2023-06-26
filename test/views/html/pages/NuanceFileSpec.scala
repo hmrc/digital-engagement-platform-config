@@ -37,7 +37,7 @@ class NuanceFileSpec extends ChatViewBehaviours {
   "Nuance File must display the correct tag in the view when pre-prod.mode = true" must {
     behave like normalPage(
       createView(true),
-      "https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js",
+      "https://hmrc-uk-preprod.lle.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js",
       ""
     )
   }
