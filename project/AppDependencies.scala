@@ -14,7 +14,7 @@ object AppDependencies {
     "org.pegdown"             %  "pegdown"                      % "1.6.0"     % "test",
     "org.scalatestplus.play"  %% "scalatestplus-play"           % "6.0.0"     % "test",
     "com.vladsch.flexmark"    %  "flexmark-all"                 % "0.62.2"    % "test",
-    "uk.gov.hmrc"             %% "bootstrap-test-play-29"       %  "8.0.0"    % "test"
+    "uk.gov.hmrc"             %% "bootstrap-test-play-29"       % "8.4.0"    % "test"
   )
 
   val all: Seq[ModuleID] = compile ++ test
