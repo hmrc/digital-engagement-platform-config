@@ -18,12 +18,10 @@ lazy val scoverageSettings = {
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(play.sbt.PlayScala, SbtDistributablesPlugin, ScoverageSbtPlugin)
   .disablePlugins(JUnitXmlReportPlugin)
-  .settings(integrationTestSettings(): _*)
   .settings(
     majorVersion                     := 0,
     libraryDependencies              ++= AppDependencies.all,
-    scalaVersion := "2.13.8",
-    SilencerSettings(),
+    scalaVersion := "2.13.12",
     PlayKeys.playDefaultPort := 9957,
     scoverageSettings
   )
