@@ -2,7 +2,6 @@ import scoverage.ScoverageKeys
 import sbt.Keys.resolvers
 import sbt.Resolver
 import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
-import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
 val appName = "digital-engagement-platform-config"
 
@@ -25,7 +24,6 @@ lazy val microservice = Project(appName, file("."))
     PlayKeys.playDefaultPort := 9957,
     scoverageSettings
   )
-  .settings(publishingSettings: _*)
   .configs(IntegrationTest)
   .settings(integrationTestSettings(): _*)
   .settings(resolvers += Resolver.jcenterRepo)
