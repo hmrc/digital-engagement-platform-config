@@ -11,7 +11,6 @@ object AppDependencies {
     "org.scalacheck"          %% "scalacheck"                   % "1.16.0"    % "test",
     "org.jsoup"               %  "jsoup"                        % "1.15.1"    % "test",
     "org.mockito"             %  "mockito-core"                 % "2.28.2"    % "test",
-    "org.pegdown"             %  "pegdown"                      % "1.6.0"     % "test",
     "org.scalatestplus.play"  %% "scalatestplus-play"           % "6.0.0"     % "test",
     "com.vladsch.flexmark"    %  "flexmark-all"                 % "0.62.2"    % "test",
     "uk.gov.hmrc"             %% "bootstrap-test-play-30"       % "10.1.0"    % "test"
