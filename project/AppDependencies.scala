@@ -3,7 +3,7 @@ import sbt.{ModuleID, _}
 object AppDependencies {
 
   val compile: Seq[ModuleID] = Seq(
-    "uk.gov.hmrc"             %% "bootstrap-frontend-play-30"   % "9.19.0"
+    "uk.gov.hmrc"             %% "bootstrap-frontend-play-30"   % "10.8.0"
   )
 
   val test: Seq[ModuleID] = Seq(
@@ -13,7 +13,7 @@ object AppDependencies {
     "org.mockito"             %  "mockito-core"                 % "2.28.2"    % "test",
     "org.scalatestplus.play"  %% "scalatestplus-play"           % "6.0.0"     % "test",
     "com.vladsch.flexmark"    %  "flexmark-all"                 % "0.62.2"    % "test",
-    "uk.gov.hmrc"             %% "bootstrap-test-play-30"       % "9.19.0"    % "test"
+    "uk.gov.hmrc"             %% "bootstrap-test-play-30"       % "10.8.0"    % "test"
   )
 
   val all: Seq[ModuleID] = compile ++ test
